@@ -1,10 +1,44 @@
 li {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   margin: 20px 0;
   padding: 20px;
   border-radius: 10px;
+  display: flex;
+}
+
+.leftArea {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score {
+  padding: 3px 0;
+  font-weight: bold;
+  color: #666;
+}
+
+.arrow {
+  font-size: 30px;
+  color: #999;
+}
+
+.rightArea {
+  margin: 10px;
 }
 
 figure {
   margin: 0;
+}
+
+.postedBy {
+  font-size: 12px;
+  color: #999;
+}
+
+.isLoading div,
+.isLoading h3,
+.isLoading figure {
+  background-color: #cccccc;
 }

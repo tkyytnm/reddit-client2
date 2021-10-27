@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const loadPostsData = createAsyncThunk("posts/loadPostsData", async () => {
-  const response = await fetch(`https://www.reddit.com/r/DOG.json`);
+  const response = await fetch(`https://www.reddit.com/r/DOG.json?count=3`);
   const json = await response.json();
   return json;
 });
