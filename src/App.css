@@ -1,11 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+
 body {
   margin: 0;
   padding: 0;
   color: #333;
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", Meiryo, sans-serif;
+    background-color: #FFF3E4;
 }
 
 header {
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: #6B4F4F;
 }

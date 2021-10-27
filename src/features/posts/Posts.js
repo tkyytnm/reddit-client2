@@ -4,27 +4,34 @@ import { loadPostsData } from "./postsSlice";
 import { selectPosts, selectIsPostsDataLoading } from "./postsSlice";
 import { Post } from "../../components/Post";
 import "./Posts.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 export function Posts() {
   const dispatch = useDispatch();
+
+  const posts = useSelector(selectPosts);
+  const isPostsDataLoading = useSelector(selectIsPostsDataLoading);
 
   useEffect(() => {
     dispatch(loadPostsData());
   }, []);
 
-  const posts = useSelector(selectPosts);
-  const isPostsDataLoading = useSelector(selectIsPostsDataLoading);
-
   return (
     <section>
-      
-      <p className="isLoading">{isPostsDataLoading ? "Loading..." : ""}</p>
-      
-      <ul>
+      <div className="isLoading">
+        {isPostsDataLoading ? (
+          <FontAwesomeIcon icon={faSpinner} spin />
+        ) : (
+          ""
+        )}
+      </div>
+
+      <div className="allPosts">
         {posts.map((post) => {
           return <Post key={post.data.id} post={post} />;
         })}
-      </ul>
+      </div>
     </section>
   );
 }

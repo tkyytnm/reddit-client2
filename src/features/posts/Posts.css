@@ -1,15 +1,17 @@
 section {
-  max-width: 980px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-ul {
+.allPosts {
   list-style-type: none;
   padding: 0;
 }
 
-p.isLoading {
-  text-align: center;
+.isLoading {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  font-size: 40px;
 }
 

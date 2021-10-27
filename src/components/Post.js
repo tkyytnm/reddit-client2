@@ -10,7 +10,7 @@ export function Post({ post }) {
   const score = calculateScore(post.data.score);
 
   return (
-    <li className={isLoading ? "isLoading" : ""}>
+    <article className={isLoading ? "isLoading" : ""}>
       <div className="leftArea">
         <FontAwesomeIcon icon={faArrowUp} className="arrow" />
         <span className="score">{score}</span>
@@ -25,7 +25,7 @@ export function Post({ post }) {
           <img src={post.data.thumbnail} alt={post.data.title} />
         </figure>
       </div>
-    </li>
+    </article>
   );
 }
 
