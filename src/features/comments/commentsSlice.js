@@ -4,9 +4,9 @@ export const loadComments = createAsyncThunk(
   "comments/loadComments",
   async (permalink) => {
     const location = permalink.substring(0, permalink.length - 1);
-    const response = await fetch(`https://www.reddit.com/${location}.json`);
+    const response = await fetch(`https://www.reddit.com${location}.json`);
     const json = await response.json();
-    return json();
+    return json;
   }
 );
 
@@ -14,12 +14,12 @@ const commentsSlice = createSlice({
   name: "comments",
   initialState: {
     permalink: "",
-    comments: {},
+    comments: [],
     isCommentLoading: false,
     isCommentLoadingHasError: false,
   },
   reducers: {
-    
+
   },
   extraReducers: (builder) => {
     builder
@@ -28,7 +28,7 @@ const commentsSlice = createSlice({
         state.isCommentLoadingHasError = false;
       })
       .addCase(loadComments.fulfilled, (state, action) => {
-        state.comments = action.payload.data.children;
+        state.comments = action.payload;
         state.isCommentLoading = false;
         state.isCommentLoadingHasError = false;
       })

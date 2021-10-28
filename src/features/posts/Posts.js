@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadPostsData } from "./postsSlice";
 import { selectPosts, selectIsPostsDataLoading } from "./postsSlice";
 import { Post } from "../../components/Post";
-import "./Posts.css";
+import "../../app/App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,9 +12,7 @@ export function Posts() {
 
   useEffect(() => {
     dispatch(loadPostsData());
-  }, []);
-
-  const [count, setCount] = useState(0);
+  }, [dispatch]);
 
   const posts = useSelector(selectPosts);
   const isPostsLoading = useSelector(selectIsPostsDataLoading);
@@ -27,7 +25,7 @@ export function Posts() {
 
       <div className={isPostsLoading ? "isLoading allPosts" : "allPosts"}>
         {posts.map((post) => {
-          return <Post key={post.data.id} post={post} />;
+          return <Post key={post.data.id} post={post} onclick={() => dispatch()} />;
         })}
       </div>
     </section>

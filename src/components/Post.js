@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Switch, Route, Link } from "react-router-dom";
 import { selectIsPostsDataLoading } from "../features/posts/postsSlice";
-import "./Post.css";
+import "../app/App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { Comments } from "../features/comments/Comments";

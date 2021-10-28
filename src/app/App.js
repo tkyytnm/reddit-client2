@@ -1,11 +1,11 @@
 import React from "react";
 // import logo from "./logo.svg";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Posts } from "./features/posts/Posts";
+import { Posts } from "../features/posts/Posts";
 import "./App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
-import { Comments } from "./features/comments/Comments";
+import { CurrentPost } from "../features/currentPost/CurrentPost";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
 
         <Switch>
           <Route path="/:permalink">
-            <Comments />
+            <CurrentPost />
           </Route>
           <Route path="/">
             <Posts />
