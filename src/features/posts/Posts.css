@@ -4,8 +4,12 @@ section {
 }
 
 .allPosts {
-  list-style-type: none;
   padding: 0;
+  transition: opacity 0.5s ease;
+}
+
+.allPosts.isLoading {
+ opacity: 0;
 }
 
 .isLoading {
@@ -13,5 +17,6 @@ section {
   top: 40%;
   left: 50%;
   font-size: 40px;
+  z-index: 10;
 }
 

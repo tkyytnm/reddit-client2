@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
+import { Switch, Route, Link } from "react-router-dom";
 import { selectIsPostsDataLoading } from "../features/posts/postsSlice";
 import "./Post.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { Comments } from "../features/comments/Comments";
 
 export function Post({ post }) {
   const isLoading = useSelector(selectIsPostsDataLoading);
@@ -20,18 +22,25 @@ export function Post({ post }) {
         <span className="postedBy">
           Posted by u/{post.data.author_fullname} {elapsed}
         </span>
-        <h3>{post.data.title}</h3>
-        <figure>
-          <img src={post.data.thumbnail} alt={post.data.title} />
-        </figure>
+        <h3>
+          <Link to={post.data.permalink}>{post.data.title}</Link>
+        </h3>
+        <Link to={post.data.permalink}>
+          <figure>
+            <img src={post.data.thumbnail} alt={post.data.title} />
+          </figure>
+        </Link>
       </div>
+      <Switch>
+        <Route path={`/:permalink`}>
+          <Comments />
+        </Route>
+      </Switch>
     </article>
   );
 }
 
 function calculateElapsed(utc) {
-  // console.log(`utc: ${utc} - now: ${Math.floor(new Date().getTime() / 1000)}`);
-
   const seconds = Math.floor(new Date().getTime() / 1000) - utc;
   const minutes = Math.floor(seconds / 60);
   const hours = Math.floor(seconds / 60 / 60);

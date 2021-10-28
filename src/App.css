@@ -12,5 +12,20 @@ body {
 header {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
+  
+}
+
+header a {
   color: #6B4F4F;
+  text-decoration: none;
+}
+
+footer {
+  background-color: #6B4F4F;
+  padding: 10px;
+  margin-top: 20px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  bottom: 0;
 }
