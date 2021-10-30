@@ -24,7 +24,7 @@ const postsSlice = createSlice({
         state.isPostsLoadingHasError = false;
       })
       .addCase(loadPostsData.fulfilled, (state, action) => {
-        state.posts = action.payload.data.children;
+        state.posts.push(action.payload.data.children);
         state.isPostsLoading = false;
         state.isPostsLoadingHasError = false;
       })

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap");
 
 /* gather all css in App.css */
 
@@ -8,17 +8,16 @@ body {
   color: #333;
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", Meiryo, sans-serif;
-    background-color: #FFF3E4;
+  background-color: #fff3e4;
 }
 
 header {
   text-align: center;
-  font-family: 'Montserrat', sans-serif;
-  
+  font-family: "Montserrat", sans-serif;
 }
 
 header a {
-  color: #6B4F4F;
+  color: #6b4f4f;
   text-decoration: none;
 }
 
@@ -29,11 +28,7 @@ section {
 
 .allPosts {
   padding: 0;
-  transition: opacity 0.5s ease;
-}
-
-.allPosts.isLoading {
- opacity: 0;
+  transition: all 0.5s ease;
 }
 
 .isLoading {
@@ -51,7 +46,21 @@ article {
   padding: 20px;
   border-radius: 10px;
   display: inline-flex;
-  background-color: #FEF5ED;
+  background-color: #fef5ed;
+}
+
+.fade-in {
+  animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateY(0px);
+  }
 }
 
 .leftArea {
@@ -69,7 +78,7 @@ article {
 
 .arrow {
   font-size: 30px;
-  color: #EED6C4;
+  color: #eed6c4;
 }
 
 .rightArea {
@@ -90,11 +99,18 @@ figure {
   color: #999;
 }
 
-
-
+section#commentSection {
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin: 10px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fef5ed;
+}
 
 footer {
-  background-color: #6B4F4F;
+  background-color: #6b4f4f;
   padding: 10px;
   margin-top: 20px;
   text-align: center;

@@ -5,7 +5,7 @@ import { Posts } from "../features/posts/Posts";
 import "./App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
-import { CurrentPost } from "../features/currentPost/CurrentPost";
+import { Comments } from "../features/comments/Comments";
 
 function App() {
   return (
@@ -21,14 +21,14 @@ function App() {
 
         <Switch>
           <Route path="/:permalink">
-            <CurrentPost />
+            <Comments />
           </Route>
           <Route path="/">
             <Posts />
           </Route>
         </Switch>
       </div>
-      <footer>Footer!!!</footer>
+      {/* <footer>Footer!!!</footer> */}
     </Router>
   );
 }
