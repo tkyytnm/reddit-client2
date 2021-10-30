@@ -1,6 +1,5 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Switch, Route, Link } from "react-router-dom";
-import { selectIsPostsDataLoading } from "./postsSlice";
 import "../../app/App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
@@ -10,7 +9,6 @@ import { calculateElapsed, calculateScore } from "../../utility/utility";
 
 export function Post({ post }) {
   const dispatch = useDispatch();
-  const isPostsLoading = useSelector(selectIsPostsDataLoading);
   const elapsed = calculateElapsed(post.data.created_utc);
   const score = calculateScore(post.data.score);
 

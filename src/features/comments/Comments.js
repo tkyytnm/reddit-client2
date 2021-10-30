@@ -4,7 +4,9 @@ import {
   selectIsCommentsLoading,
   loadComments,
 } from "./commentsSlice";
+import { Comment } from "./Comment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import "../../app/App.css";
 import { calculateElapsed, calculateScore } from "../../utility/utility";
@@ -19,7 +21,11 @@ export function Comments() {
     dispatch(loadComments(permalink));
   }
 
-  const commentsForPost = comments[0] ? comments[0].data.children[0].data : "";
+  const postOfComments = comments[0] ? comments[0].data.children[0].data : "";
+  const commentsOfPost = comments[1] ? comments[1].data.children : [];
+  const elapsed = calculateElapsed(postOfComments.created_utc);
+  const score = calculateScore(postOfComments.score);
+
   if (isCommentsLoading)
     return (
       <div className="isLoading">
@@ -29,11 +35,26 @@ export function Comments() {
 
   return (
     <section id="commentSection" className="fade-in">
-      <h2>{commentsForPost.title}</h2>
-      <figure>
-        <img src={commentsForPost.thumbnail} alt={commentsForPost.title} />
-      </figure>
-      <p></p>
+      <div className="leftArea">
+        <FontAwesomeIcon icon={faArrowUp} className="arrow" />
+        <span className="score">{score}</span>
+        <FontAwesomeIcon icon={faArrowDown} className="arrow" />
+      </div>
+      <div className="rightArea">
+        <span className="postedBy">
+          Posted by u/{postOfComments.author_fullname} {elapsed}
+        </span>
+        <h2>{postOfComments.title}</h2>
+        <figure>
+          <img src={postOfComments.thumbnail} alt={postOfComments.title} />
+        </figure>
+        <div>
+          <h3>Comments</h3>
+          {commentsOfPost.map((comment) => {
+            return <Comment key={comment.data.id} comment={comment} />;
+          })}
+        </div>
+      </div>
     </section>
   );
 }
