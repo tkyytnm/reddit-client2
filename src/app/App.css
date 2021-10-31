@@ -189,11 +189,19 @@ figure {
 }
 
 #pageTop {
+  cursor: pointer;
   position: fixed;
-  bottom: 10px;
+  bottom: -50px;
   right: 10px;
   font-size: 40px;
   color: #6b4f4f;
+  transition: all .5s ease;
+  opacity: 0;
+}
+
+#pageTop.show {
+  opacity: 1;
+  bottom: 10px
 }
 
 footer {

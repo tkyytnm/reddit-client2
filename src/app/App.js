@@ -4,9 +4,10 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Posts } from "../features/posts/Posts";
 import "./App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaw, faChevronCircleUp } from "@fortawesome/free-solid-svg-icons";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import { Comments } from "../features/comments/Comments";
 import { Hamburger } from "../components/Hamburger";
+import { PageTopButton} from "../components/PageTopButton";
 
 function App() {
   return (
@@ -29,9 +30,7 @@ function App() {
           </Route>
         </Switch>
       </div>
-      <a href="#top" id="pageTop">
-        <FontAwesomeIcon icon={faChevronCircleUp} />
-      </a>
+      <PageTopButton />
       {/* <footer>Footer!!!</footer> */}
     </Router>
   );
