@@ -1,14 +1,11 @@
-import { useDispatch } from "react-redux";
 import { Switch, Route, Link } from "react-router-dom";
 import "../../app/App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { Comments } from "../comments/Comments";
-import { loadComments } from "../comments/commentsSlice";
 import { calculateElapsed, calculateScore } from "../../utility/utility";
 
 export function Post({ post }) {
-  const dispatch = useDispatch();
   const elapsed = calculateElapsed(post.data.created_utc);
   const score = calculateScore(post.data.score);
 
@@ -24,17 +21,9 @@ export function Post({ post }) {
           Posted by u/{post.data.author_fullname} {elapsed}
         </span>
         <h3>
-          <Link
-            to={post.data.permalink}
-            onClick={() => dispatch(loadComments(post.data.permalink))}
-          >
-            {post.data.title}
-          </Link>
+          <Link to={post.data.permalink}>{post.data.title}</Link>
         </h3>
-        <Link
-          to={post.data.permalink}
-          onClick={() => dispatch(loadComments(post.data.permalink))}
-        >
+        <Link to={post.data.permalink}>
           <figure>
             <img src={post.data.thumbnail} alt={post.data.title} />
           </figure>

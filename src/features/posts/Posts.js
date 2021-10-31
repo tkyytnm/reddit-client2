@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadPostsData } from "./postsSlice";
-import { selectPosts, selectIsPostsDataLoading } from "./postsSlice";
+import {
+  selectPosts,
+  selectCurrentPosts,
+  selectIsPostsDataLoading,
+  selectIsPostsLoadingHasError,
+} from "./postsSlice";
 import { Post } from "./Post";
 import "../../app/App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,14 +14,15 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 export function Posts() {
   const dispatch = useDispatch();
+  const currentPosts = useSelector(selectCurrentPosts);
 
   useEffect(() => {
-    dispatch(loadPostsData());
-  }, [dispatch]);
+    dispatch(loadPostsData(currentPosts));
+  }, [currentPosts]);
 
   const loadedPosts = useSelector(selectPosts);
-  const posts = loadedPosts[0] ? loadedPosts[0] : [];
   const isPostsLoading = useSelector(selectIsPostsDataLoading);
+  const isPostsLoadingHasError = useSelector(selectIsPostsLoadingHasError);
 
   if (isPostsLoading)
     return (
@@ -25,10 +31,12 @@ export function Posts() {
       </div>
     );
 
+  if (isPostsLoadingHasError) return <div>Error Occurred!</div>;
+
   return (
     <section>
       <div className="allPosts">
-        {posts.map((post) => {
+        {loadedPosts.map((post) => {
           return <Post key={post.data.id} post={post} />;
         })}
       </div>

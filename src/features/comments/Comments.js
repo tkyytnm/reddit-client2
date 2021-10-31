@@ -10,6 +10,7 @@ import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import "../../app/App.css";
 import { calculateElapsed, calculateScore } from "../../utility/utility";
+import { useEffect } from "react";
 
 export function Comments() {
   const comments = useSelector(selectComments);
@@ -17,9 +18,9 @@ export function Comments() {
   const dispatch = useDispatch();
   const permalink = window.location.pathname;
 
-  if (comments.length === 0) {
+  useEffect(() => {
     dispatch(loadComments(permalink));
-  }
+  }, [dispatch]);
 
   const postOfComments = comments[0] ? comments[0].data.children[0].data : "";
   const commentsOfPost = comments[1] ? comments[1].data.children : [];

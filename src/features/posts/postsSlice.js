@@ -2,8 +2,10 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const loadPostsData = createAsyncThunk(
   "posts/loadPostsData",
-  async () => {
-    const response = await fetch(`https://www.reddit.com/r/DOG.json`);
+  async (currentPosts) => {
+    const response = await fetch(
+      `https://www.reddit.com/r/${currentPosts}.json`
+    );
     const json = await response.json();
     return json;
   }
@@ -13,10 +15,15 @@ const postsSlice = createSlice({
   name: "posts",
   initialState: {
     posts: [],
+    currentPosts: "DOG",
     isPostsLoading: false,
     isPostsLoadingHasError: false,
   },
-  reducers: {},
+  reducers: {
+    switchCurrentPosts: (state, action) => {
+      state.currentPosts = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadPostsData.pending, (state) => {
@@ -24,7 +31,7 @@ const postsSlice = createSlice({
         state.isPostsLoadingHasError = false;
       })
       .addCase(loadPostsData.fulfilled, (state, action) => {
-        state.posts.push(action.payload.data.children);
+        state.posts = action.payload.data.children;
         state.isPostsLoading = false;
         state.isPostsLoadingHasError = false;
       })
@@ -36,7 +43,10 @@ const postsSlice = createSlice({
 });
 
 export const selectPosts = (state) => state.posts.posts;
-export const selectIsPostsDataLoading = (state) =>
-  state.posts.isPostsLoading;
+export const selectCurrentPosts = (state) => state.posts.currentPosts;
+export const selectIsPostsDataLoading = (state) => state.posts.isPostsLoading;
+export const selectIsPostsLoadingHasError = (state) =>
+  state.posts.isPostsLoadingHasError;
 
+export const { switchCurrentPosts } = postsSlice.actions;
 export const postsReducer = postsSlice.reducer;

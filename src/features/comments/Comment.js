@@ -1,7 +1,4 @@
 export function Comment({ comment }) {
-  const showdown = require("showdown");
-  const converter = new showdown.Converter();
- 
   return (
     <>
       <div className="comment">

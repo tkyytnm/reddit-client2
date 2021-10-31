@@ -29,10 +29,10 @@ function calculateElapsed(utc) {
 
 function calculateScore(score) {
   if (score > 1000 * 1000) {
-    return score / 1000 / 1000 + "m";
+    return Math.floor(score / 1000 / 1000) + "m";
   }
   if (score > 1000) {
-    return score / 1000 + "k";
+    return Math.floor(score / 1000) + "k";
   }
   return score;
 }
