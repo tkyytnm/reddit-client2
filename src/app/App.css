@@ -9,6 +9,11 @@ body {
   background-color: #fff3e4;
 }
 
+a {
+  color: #6b4f4f;
+  text-decoration: none;
+}
+
 header {
   text-align: center;
   font-family: "Montserrat", sans-serif;
@@ -92,6 +97,7 @@ section {
   text-align: center;
   margin: 10px auto;
   color: #6b4f4f;
+  font-weight: bold;
 }
 
 #search input {
@@ -192,7 +198,7 @@ figure {
   padding: 20px;
   margin: 10px auto;
   border-radius: 10px;
-  background-color: #FEF9EF;
+  background-color: #fef9ef;
 }
 
 .comment-author {
@@ -209,13 +215,13 @@ figure {
   right: 10px;
   font-size: 40px;
   color: #6b4f4f;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   opacity: 0;
 }
 
 #pageTop.show {
   opacity: 1;
-  bottom: 10px
+  bottom: 10px;
 }
 
 footer {

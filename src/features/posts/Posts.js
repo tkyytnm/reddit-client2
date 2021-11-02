@@ -20,13 +20,12 @@ export function Posts() {
 
   useEffect(() => {
     dispatch(loadPostsData(currentPosts));
-  }, [currentPosts]);
+  }, [dispatch, currentPosts]);
 
   const loadedPosts = useSelector(selectPosts);
   const isPostsLoading = useSelector(selectIsPostsDataLoading);
   const isPostsLoadingHasError = useSelector(selectIsPostsLoadingHasError);
   const searchTerm = useSelector(selectSearchTerm);
-  console.log(searchTerm);
   const filteredPosts = loadedPosts.filter((post) =>
     post.data.title.toLowerCase().includes(searchTerm.toLowerCase())
   );

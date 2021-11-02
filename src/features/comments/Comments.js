@@ -6,7 +6,11 @@ import {
 } from "./commentsSlice";
 import { Comment } from "./Comment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowUp,
+  faArrowDown,
+  faPaw,
+} from "@fortawesome/free-solid-svg-icons";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import "../../app/App.css";
 import { calculateElapsed, calculateScore } from "../../utility/utility";
@@ -20,7 +24,7 @@ export function Comments() {
 
   useEffect(() => {
     dispatch(loadComments(permalink));
-  }, [dispatch]);
+  }, [dispatch, permalink]);
 
   const postOfComments = comments[0] ? comments[0].data.children[0].data : "";
   const commentsOfPost = comments[1] ? comments[1].data.children : [];
@@ -33,6 +37,13 @@ export function Comments() {
         {isCommentsLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : ""}
       </div>
     );
+
+  const regex = new RegExp("https://.*[.]jpg");
+  const isThumbnail = regex.test(postOfComments.thumbnail);
+  const isGallery = postOfComments.is_gallery;
+  const isSelf = postOfComments.is_self;
+  const isVideo = postOfComments.is_video;
+  console.log(isGallery);
 
   return (
     <section id="commentSection" className="fade-in">
@@ -47,7 +58,15 @@ export function Comments() {
         </span>
         <h2>{postOfComments.title}</h2>
         <figure>
-          <img src={postOfComments.thumbnail} alt={postOfComments.title} />
+          {isThumbnail ? (
+            <img src={postOfComments.thumbnail} alt={postOfComments.title} />
+          ) : (
+            <>
+              <FontAwesomeIcon icon={faPaw} />
+              ...No Thumbnails...
+              <FontAwesomeIcon icon={faPaw} />
+            </>
+          )}
         </figure>
         <div>
           <h3>Comments</h3>

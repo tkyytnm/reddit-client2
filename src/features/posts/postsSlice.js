@@ -15,7 +15,7 @@ const postsSlice = createSlice({
   name: "posts",
   initialState: {
     posts: [],
-    currentPosts: "DOG",
+    currentPosts: "lookatmydog",
     isPostsLoading: false,
     isPostsLoadingHasError: false,
   },

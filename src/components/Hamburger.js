@@ -28,9 +28,6 @@ export function Hamburger() {
       </div>
       <div id="hamburgerMenu" className={hamOn ? "on" : ""}>
         <Link to="/">
-          <div onClick={() => switchCurrentPostsHandler("DOG")}>DOG</div>
-        </Link>
-        <Link to="/">
           <div onClick={() => switchCurrentPostsHandler("lookatmydog")}>
             Look At My Dog
           </div>
@@ -41,6 +38,9 @@ export function Hamburger() {
           >
             WhatsWrongWithYourDog
           </div>
+        </Link>
+        <Link to="/">
+          <div onClick={() => switchCurrentPostsHandler("DOG")}>DOG</div>
         </Link>
       </div>
     </nav>

@@ -9,7 +9,7 @@ export function Search() {
 
   return (
     <div id="search">
-      Filter Title: <input type="text" onChange={handleChange} />
+      Filter by Title: <input type="text" onChange={handleChange} />
     </div>
   );
 }
