@@ -1,3 +1,4 @@
+import React from "react";
 import { setSearchTerm } from "./searchSlice";
 import { useDispatch } from "react-redux";
 

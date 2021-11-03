@@ -1,3 +1,4 @@
+import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "../../app/App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

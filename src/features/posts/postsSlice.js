@@ -48,5 +48,5 @@ export const selectIsPostsDataLoading = (state) => state.posts.isPostsLoading;
 export const selectIsPostsLoadingHasError = (state) =>
   state.posts.isPostsLoadingHasError;
 
-export const { switchCurrentPosts, setFilteredPosts } = postsSlice.actions;
+export const { switchCurrentPosts } = postsSlice.actions;
 export const postsReducer = postsSlice.reducer;
