@@ -42,8 +42,8 @@ export function Comments() {
   const regex = new RegExp("https://.*[.]jpg");
   const isThumbnail = regex.test(postOfComments.thumbnail);
   const isGallery = postOfComments.is_gallery;
-  const isSelf = postOfComments.is_self;
-  const isVideo = postOfComments.is_video;
+  // const isSelf = postOfComments.is_self;
+  // const isVideo = postOfComments.is_video;
   console.log(isGallery);
 
   return (
